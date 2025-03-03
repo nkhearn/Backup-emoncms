@@ -19,8 +19,8 @@ This project provides a simple script to automate the backup of your EmonCMS dat
 1.  **Clone the Repository:**
 
     ```bash
-    git clone [repository URL]
-    cd [repository directory]
+    git clone https://github.com/nkhearn/Backup-emoncms.git
+    cd backup-emoncms
     ```
 
 2.  **Install Dependencies:**
@@ -29,13 +29,6 @@ This project provides a simple script to automate the backup of your EmonCMS dat
     pip install -r requirements.txt
     ```
 
-    If you don't have a `requirements.txt` file, create one with these contents:
-
-    ```
-    google-api-python-client
-    google-auth-httplib2
-    google-auth-oauthlib
-    ```
 
 3.  **Create Google Cloud Service Account Credentials:**
 
@@ -53,25 +46,13 @@ This project provides a simple script to automate the backup of your EmonCMS dat
 
 4.  **Configure the Script:**
 
-    * Open the `backup_emoncms.py` (or whatever you name your python script) file.
-    * Modify the following variables to match your setup:
-
-        ```python
-        EMONCMS_DB_USER = "your_emoncms_db_user"
-        EMONCMS_DB_PASSWORD = "your_emoncms_db_password"
-        EMONCMS_DB_HOST = "your_emoncms_db_host" #usually localhost
-        EMONCMS_DB_NAME = "your_emoncms_db_name"
-        BACKUP_FILE_NAME = "emoncms_backup.sql"
-        GOOGLE_DRIVE_FOLDER_ID = "your_google_drive_folder_id" # Retrieve this from google drive.
-        SERVICE_ACCOUNT_FILE = "service_credentials.json"
-        ```
 
     * To get your google drive folder ID, open google drive in your browser, and navigate to the folder you wish to use. The ID is in the url. For example: `https://drive.google.com/drive/folders/YOUR_FOLDER_ID`
 
 5.  **Run the Script:**
 
     ```bash
-    python backup_emoncms.py
+    ./backup.sh
     ```
 
 ## Scheduling
@@ -83,7 +64,7 @@ You can schedule the script to run automatically using cron (Linux/macOS) or Tas
 To run the script daily at 2:00 AM, add the following line to your crontab:
 
 ```bash
-0 2 * * * python /path/to/your/backup_emoncms.py
+0 2 * * * /path/to/backup.sh
 ```
 
 To edit your crontab, run crontab -e.
@@ -92,7 +73,7 @@ Example Task Scheduler (Windows):
  * Create a new basic task.
  * Set the trigger to run daily at your desired time.
  * Set the action to "Start a program."
- * Browse to your Python executable and add the path to your backup_emoncms.py script as an argument.
+ * Browse to your executable and add the path to your backup.sh script as an argument.
 Security
  * Secure your service_credentials.json file. Do not share it or commit it to version control.
  * Use strong passwords for your EmonCMS database.
