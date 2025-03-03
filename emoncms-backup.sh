@@ -171,6 +171,6 @@ date
 echo "Export finished...refresh page to view download link"
 echo "=== Emoncms export complete! ===" # This string is identified in the interface to stop ongoing AJAX calls, please ammend in interface if changed here
 echo "Running google drive upload..."
-python backup.python
+python backup.py
 echo "Deleting emoncms-backup-$date.tar.gz"
 rm $backup_location/emoncms-backup-$date.tar.gz
