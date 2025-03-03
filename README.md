@@ -45,7 +45,9 @@ This project provides a simple script to automate the backup of your EmonCMS dat
     * **Important:** Keep this `service_credentials.json` file secure. Do not commit it to version control.
 
 4.  **Configure the Script:**
-
+    * Configure the `backup.py` script.
+    * Near the bottom of the script is a path.join.  it uses the default path of `/var/opt/emoncms/backup`
+    * Change this to your backup file location.
 
     * To get your google drive folder ID, open google drive in your browser, and navigate to the folder you wish to use. The ID is in the url. For example: `https://drive.google.com/drive/folders/YOUR_FOLDER_ID`
 
